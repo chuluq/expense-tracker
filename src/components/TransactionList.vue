@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Transaction } from '@/App.vue'
-import { defineProps } from 'vue'
+import type { Transaction } from "@/App.vue";
+import { defineProps } from "vue";
 
-const props = defineProps<{ transactions: Transaction[] }>()
+const props = defineProps<{ transactions: Transaction[] }>();
 </script>
 
 <template>
