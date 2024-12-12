@@ -4,6 +4,8 @@ import { useToast } from "vue-toastification";
 
 const toast = useToast();
 
+const emit = defineEmits(["transactionSubmitted"]);
+
 const text = ref("");
 const amount = ref("");
 
@@ -12,6 +14,13 @@ const addTransaction = () => {
     toast.error("Both fields are required");
     return;
   }
+
+  const transactionData = {
+    text: text.value,
+    amount: parseFloat(amount.value),
+  };
+
+  emit("transactionSubmitted", transactionData);
 
   text.value = "";
   amount.value = "";
