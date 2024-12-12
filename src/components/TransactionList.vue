@@ -1,21 +1,15 @@
 <script setup lang="ts">
-interface Transaction {
-  id: number
-  text: string
-  amount: number
-}
+import type { Transaction } from '@/App.vue'
+import { defineProps } from 'vue'
 
-const transactions: Transaction[] = [
-  { id: 1, text: 'Flower', amount: -19.99 },
-  { id: 2, text: 'Salary', amount: 299.97 },
-]
+const props = defineProps<{ transactions: Transaction[] }>()
 </script>
 
 <template>
   <h3>History</h3>
   <ul id="list" class="list">
     <li
-      v-for="transaction in transactions"
+      v-for="transaction in props.transactions"
       :key="transaction.id"
       :class="transaction.amount < 0 ? 'minus' : 'plus'"
     >
