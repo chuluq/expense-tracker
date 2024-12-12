@@ -1,11 +1,20 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
 
 const text = ref("");
 const amount = ref("");
 
 const addTransaction = () => {
-  console.log(text.value, amount.value);
+  if (!text.value || !amount.value) {
+    toast.error("Both fields are required");
+    return;
+  }
+
+  text.value = "";
+  amount.value = "";
 };
 </script>
 
